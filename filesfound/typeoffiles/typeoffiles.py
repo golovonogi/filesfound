@@ -23,22 +23,6 @@ def find_in_path(path):
 
     return types
 
-#def count_types(types):
-    #c = Counter()
-    #for value in types.values():
-    #    c[value] +=1
-    #return c
-
-#def find_specific_type(c, types):
-    #count = 0
-    #all_need_types = {}
-    #for type in types:
-    #    if type in c.keys():
-    #        value = c.get(type)
-    #        all_need_types.update({type:value})
-    #        count += value
-    #return all_need_types, count
-
 def count_types(types, path, size):
     files = find_in_path(path)
     c = Counter()

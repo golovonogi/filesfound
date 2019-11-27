@@ -1,20 +1,6 @@
 import os
 
 
-
-#def find_size(all_files, types):
-#        c = 0
-#        s = 0
-#        t = find_type(all_files)
-#        for type in types:
-#            for k, v in t.items():
-#                if v == type:
-#                    c += 1
-#                    s += os.path.getsize(k)
-#        return s, c
-
-
-
 def find_size(types, all_types):
     size = 0
     all_values = {}
