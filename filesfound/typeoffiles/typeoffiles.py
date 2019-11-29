@@ -5,26 +5,21 @@ from filesfound.sizeoffiles.sizeoffiles import find_size
 
 
 def find_in_path(path):
-    all_files = []
+    for address, dirs, files in os.walk(path):
+        for file in files:
+            f = address + '/' + file
+            yield f
+
+def find_types(path):
+    files = find_in_path(path)
     types = {}
-    files=os.listdir(path)
-
     for file in files:
-        if os.path.isfile(os.path.join(path, file)):
-            all_files.append(os.path.join(path, file))
-        elif os.path.isdir(os.path.join(path, file)):
-            all_files += find_in_path(os.path.join(path, file))
-        else:
-            raise ValueError(os.path.join(path, file))
-
-    for file in all_files:
         mimetype = magic.Magic().from_file(file)
-        types.update({file:mimetype})
-
+        types.update({file: mimetype})
     return types
 
 def count_types(types, path, size):
-    files = find_in_path(path)
+    files = find_types(path)
     c = Counter()
     count = 0
     all_need_types = {}

@@ -1,5 +1,5 @@
 import argparse
-from filesfound.typeoffiles.typeoffiles import count_types
+from filesfound.typeoffiles.typeoffiles import count_types, find_in_path
 
 
 def args_command():
@@ -10,7 +10,6 @@ def args_command():
     parser.add_argument("-s", "--size", action="store_true",
                         help="size of files")
     args = parser.parse_args()
-
 
     types_files, count = count_types(args.type, args.path, args.size)
     for item in types_files.items():
